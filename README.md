@@ -1,12 +1,3 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
@@ -25,3 +16,19 @@ If you are developing a production application, we recommend updating the config
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## Teste da WS FR
+
+O projeto segue algmas diretrizes que foram escolhidas para facilitar o uso e a manutenção do código.
+
+## Marcas dos carros
+
+Dentro da pasta assets em **src/assets** existem 3 arquivos **.tsx** que são as logos das possíveis marcas dos carros que são apresentados ao usuário.
+Esses componentes podem receber duas propriedades que **não são obrigatórias**, seguindo o tipo padrão dos svgs da aplicação que é:
+
+```js
+   SVGProps: {
+      size?: string;
+      color?: string;
+   },
+```
