@@ -1,10 +1,13 @@
 import Vehicle from "./components/vehicle/containers/vehicle";
+import { BaseLayout } from "./layout/layout";
 import MainProvider from "./providers";
 
 function App() {
   return (
     <MainProvider>
-      <Vehicle />
+      <BaseLayout>
+        <Vehicle />
+      </BaseLayout>
     </MainProvider>
   );
 }

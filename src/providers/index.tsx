@@ -1,11 +1,6 @@
-import { QueryProvider } from "./queryProvider";
+import { OnlyChildrenProps } from "~/types/children";
 import { ThemeProvider } from "./themeProvider";
-import { ProviderProps } from "./types";
 
-export default function MainProvider({ children }: ProviderProps) {
-  return (
-    <QueryProvider>
-      <ThemeProvider>{children}</ThemeProvider>
-    </QueryProvider>
-  );
+export default function MainProvider({ children }: OnlyChildrenProps) {
+  return <ThemeProvider>{children}</ThemeProvider>;
 }

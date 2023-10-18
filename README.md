@@ -23,7 +23,7 @@ O projeto segue algmas diretrizes que foram escolhidas para facilitar o uso e a 
 
 ## Marcas dos carros
 
-Dentro da pasta assets em **src/assets** existem 3 arquivos **.tsx** que são as logos das possíveis marcas dos carros que são apresentados ao usuário.
+Dentro da pasta assets em `src/assets` existem 3 arquivos `.tsx` que são as logos das possíveis marcas dos carros que são apresentados ao usuário.
 Esses componentes podem receber duas propriedades que **não são obrigatórias**, seguindo o tipo padrão dos svgs da aplicação que é:
 
 ```js
@@ -32,3 +32,31 @@ Esses componentes podem receber duas propriedades que **não são obrigatórias*
       color?: string;
    },
 ```
+
+não sendo obrigatória nenhuma das propriedades e sendo utilizadas como um componente padrão do react.
+
+## Componentes
+
+Aqui dentro ficam todos os componentes da aplicação separados por pastas.
+Cada pasta tem a função de separar por nome os componentes que serão utilizados na aplicação
+com excessão da pasta `elements` que contém todos os componentes que podem ser reutilizados
+dentro de outros componentes, como botões, inputs, cards, etc...
+
+## Pastas *Containers*
+
+São as pastas que contem os componentes responsáveis pela lógica principal dos componentes:
+
+- Integração com backend
+- Status principal de inicialização
+
+## Pastas *Components*
+
+São responsáveis pela parte visual do componente:
+
+- Estrutura dos elementos
+- Dados recebidos pelos containers
+- Estilos
+
+## Pastas *Types*
+
+Como o próprio nome ja diz, são as pastas responsáveis pelos tipos que serão utilizados dentro daquele componente

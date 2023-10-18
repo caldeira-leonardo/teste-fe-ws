@@ -1,5 +1,5 @@
 export type VehicleProps = {
-  id: number;
+  id: number | string;
   timestamp_cadastro: number;
   modelo_id: number;
   ano: number;

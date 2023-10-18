@@ -1,8 +1,8 @@
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import { theme } from "../theme/theme";
-import { ProviderProps } from "./types";
+import { OnlyChildrenProps } from "~/types/children";
 
-function ThemeProvider({ children }: ProviderProps) {
+function ThemeProvider({ children }: OnlyChildrenProps) {
   return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>;
 }
 
