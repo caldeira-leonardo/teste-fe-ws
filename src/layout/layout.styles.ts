@@ -4,13 +4,14 @@ import { theme } from "~/theme/theme";
 export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   padding: 0;
   margin: 0;
 `;
 
 export const Header = styled.header`
-  height: 15vh;
+  height: 10vh;
+  /* min-height: 70px; */
   box-sizing: border-box;
   background-color: ${theme.colors.background};
   padding: 20px;
@@ -26,8 +27,8 @@ export const Header = styled.header`
   }
 
   img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 `;
 export const Button = styled.button`
@@ -37,8 +38,6 @@ export const Button = styled.button`
 `;
 
 export const Main = styled.main`
-  height: 85vh;
-  max-height: 85vh;
-  box-sizing: border-box;
+  height: 90vh;
   overflow: auto;
 `;

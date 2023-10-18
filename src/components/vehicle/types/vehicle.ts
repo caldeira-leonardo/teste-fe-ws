@@ -1,5 +1,5 @@
 export type VehicleProps = {
-  id: number | string;
+  id: string;
   timestamp_cadastro: number;
   modelo_id: number;
   ano: number;
@@ -9,4 +9,11 @@ export type VehicleProps = {
   nome_modelo: string;
   valor: number;
   brand: number;
+};
+
+export type VehicleComponentProps = {
+  carData: VehicleProps[];
+  removeVehicle(vehicleId: string): void;
+  addVehicle(vehicle: Omit<VehicleProps, "id">): void;
+  changeVehicle(vehicleId: string, vehicle: VehicleProps): void;
 };

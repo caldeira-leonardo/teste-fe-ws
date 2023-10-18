@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
   color: ${theme.colors.white};
   background-image: linear-gradient(#fff, #3b3b3b);
   border-radius: 4px;
-  position: relative;
   padding: 20px;
   cursor: pointer;
   overflow: hidden;
@@ -17,6 +16,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+  position: relative;
 `;
 
 export const ImageWrapper = styled.div`
@@ -62,4 +62,27 @@ export const TimeWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
+`;
+
+export const EditIconWrapper = styled.div`
+  width: 24px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 18px;
+
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.highlight};
+  padding: 4px;
+  border-radius: 50%;
+`;
+
+export const RemoveIconWrapper = styled(EditIconWrapper)`
+  right: 60px;
+  background-color: ${theme.colors.error};
 `;

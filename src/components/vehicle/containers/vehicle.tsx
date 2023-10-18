@@ -42,7 +42,24 @@ const Vehicle = () => {
     // });
   }, []);
 
-  return <VehicleComponent {...{ carData }} />;
+  return (
+    <VehicleComponent
+      {...{ carData, addVehicle, changeVehicle, removeVehicle }}
+    />
+  );
 };
 
 export default Vehicle;
+
+function addVehicle(vehicle: Omit<VehicleProps, "id">) {
+  console.log("addVehicle vehicle", vehicle); // remove logs
+}
+
+function changeVehicle(vehicleId: string, vehicle: VehicleProps) {
+  console.log("changeVehicle vehicleId", vehicleId); // remove logs
+  console.log("changeVehicle vehicle", vehicle); // remove logs
+}
+
+function removeVehicle(vehicleId: string) {
+  console.log("vehicleId", vehicleId); // remove logs
+}

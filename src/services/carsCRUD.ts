@@ -2,16 +2,19 @@ import { addDoc, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { VehicleProps } from "~/components/vehicle/types/vehicle";
 import { carsCollection } from "~/lib/firebase/controller";
 
-export async function addCar(car: Omit<VehicleProps, "id">) {
+export async function addVehicle(vehicle: Omit<VehicleProps, "id">) {
   await addDoc(carsCollection, {
-    ...car,
+    ...vehicle,
   });
 }
 
-export async function removeCar(id: string) {
+export async function removeVehicle(id: string) {
   await deleteDoc(doc(carsCollection, id));
 }
 
-export async function updateCar(id: string, newCar: Omit<VehicleProps, "id">) {
-  await setDoc(doc(carsCollection, id), newCar, { merge: true });
+export async function updateVehicle(
+  id: string,
+  newVehicle: Omit<VehicleProps, "id">
+) {
+  await setDoc(doc(carsCollection, id), newVehicle, { merge: true });
 }

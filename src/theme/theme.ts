@@ -12,5 +12,6 @@ export const theme = {
     buttonHover: "#428BCA",
     neutral: "#F0F0F0",
     white: "#ffffff",
+    error: "#ED3538",
   },
 };

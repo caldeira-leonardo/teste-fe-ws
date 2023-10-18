@@ -5,13 +5,12 @@ import {
 } from "~/utils/formatter";
 import { VehicleCardProps } from "../types/vehicleCard";
 import * as S from "./vehicleCard.styles";
+import { FiEdit3, FiTrash } from "react-icons/fi";
 
-const VehicleCard = ({ vehicle, onClick }: VehicleCardProps) => {
-  // TODO Mostrar todos os dados relevntes dos carror
-
+const VehicleCard = ({ vehicle, onClick, onClickRemove }: VehicleCardProps) => {
   return (
-    <S.Wrapper onClick={() => onClick(vehicle)}>
-      <S.ImageWrapper></S.ImageWrapper>
+    <S.Wrapper>
+      <S.ImageWrapper onClick={() => onClick(vehicle)} />
 
       <S.Content>
         <div>
@@ -26,6 +25,12 @@ const VehicleCard = ({ vehicle, onClick }: VehicleCardProps) => {
           <S.Title>{timeFormatterTime(vehicle.timestamp_cadastro)}</S.Title>
         </S.TimeWrapper>
       </S.Content>
+      <S.RemoveIconWrapper onClick={() => onClickRemove(vehicle)}>
+        <FiTrash />
+      </S.RemoveIconWrapper>
+      <S.EditIconWrapper onClick={() => console.log("1234")}>
+        <FiEdit3 />
+      </S.EditIconWrapper>
     </S.Wrapper>
   );
 };
