@@ -10,7 +10,6 @@ import { ErrorMessage } from "../../errorMessage/components/errorMessage";
 
 const Form = ({ vehicleValues, onSubmitValues }: FormProps) => {
   const initialValues: Omit<VehicleProps, "id"> = useMemo(() => {
-    console.log("vehicleValues?.brand", vehicleValues?.brand); // remove logs
     return {
       ano: vehicleValues?.ano ?? 0,
       combustivel: vehicleValues?.combustivel ?? "",

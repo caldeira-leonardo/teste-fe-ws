@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
 `;
 
-export const Content = styled.div`
+export const Header = styled.div`
   width: 100%;
   height: 100%;
   padding: 20px;
@@ -24,7 +24,7 @@ export const ImageWrapper = styled.div`
   height: 200px;
   opacity: 0.4;
   background-image: url("https://svgsilh.com/svg/1299198.svg");
-  background-size: 130px 130px;
+  background-size: 230px 230px;
   background-repeat: no-repeat;
   background-position: center;
 `;
@@ -46,6 +46,10 @@ export const VehicleInfosWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding: 20px 0;
+
+  @media only screen and (max-width: 767px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 export const VehicleInfos = styled.div`

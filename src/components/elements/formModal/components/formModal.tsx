@@ -16,6 +16,11 @@ export const FormModal = ({
       onRequestClose={onClose}
       ariaHideApp={false}
     >
+      {/**
+       * @component <Form />
+       * Formulário a ser apresentado para o usuário com as informações a serem alteradas
+       * ou com os campos para criar um novo veículo
+       */}
       <Form vehicleValues={vehicle} onSubmitValues={onSubmit} />
     </ReactModal>
   );

@@ -38,6 +38,14 @@ São responsáveis pela parte visual do componente:
 - Dados recebidos pelos containers
 - Estilos
 
+## ESTILOS
+
+Utilizei styled-components para a criação da aplicação.
+É uma biblioteca css-in-js onde é possivel não somente estilizar mas também usar/alterar os valores das propriedades daquele componente.
+TODOS os componentes estilizados são escritos com um S maiusculo em seu começo, como por exemplo:
+`<S.Wrapper>...</S.Wrapper>`.
+Eu costumo exportar todos os componentes como padrão do componente de estilo e utilizarlos assim, pois assim que olho para o codigo eu já consigo dizer se aquele componente tem alguma estilização ou está com seu estilo padrão.
+
 ## Pastas _Types_
 
 Como o próprio nome ja diz, são as pastas responsáveis pelos tipos que serão utilizados dentro daquele componente
@@ -69,7 +77,3 @@ Os dados buscados no Firebase são atualizados automaticamente pelo GET, o próp
 ## Utils
 
 Pasta que contém funções de formatação de dados
-
----
-
-- Dentro de cada componente será apresentado a documentação do mesmo.

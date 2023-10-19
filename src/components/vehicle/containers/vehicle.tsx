@@ -39,17 +39,21 @@ const Vehicle = () => {
 export default Vehicle;
 
 function addVehicle(vehicle: Omit<VehicleProps, "id">) {
-  addVehicleService({
-    ...vehicle,
-    timestamp_cadastro: Date.now(),
-    brand: Number(vehicle.brand),
-  });
+  addVehicleService(formateDataToSend(vehicle));
 }
 
 function changeVehicle(vehicleId: string, vehicle: VehicleProps) {
-  updateVehicleService(vehicleId, { ...vehicle, brand: Number(vehicle.brand) });
+  updateVehicleService(vehicleId, formateDataToSend(vehicle));
 }
 
 function removeVehicle(vehicleId: string) {
   removeVehicleService(vehicleId);
+}
+
+function formateDataToSend(vehicle: Omit<VehicleProps, "id">) {
+  return {
+    ...vehicle,
+    timestamp_cadastro: Date.now(),
+    brand: Number(vehicle.brand),
+  };
 }
