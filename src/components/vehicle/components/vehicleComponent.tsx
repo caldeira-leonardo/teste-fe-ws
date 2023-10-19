@@ -2,10 +2,11 @@ import { useState } from "react";
 import VehicleCard from "~/components/elements/vehicleCard/components/vehicleCard";
 import { VehicleComponentProps, VehicleProps } from "../types/vehicle";
 import * as S from "./vehicleComponent.styles";
-import { CardModal } from "~/components/elements/cardModal/components/cardModal";
 import { brandKeys, brandValues } from "~/utils/cars";
 import { ConfirmationModal } from "~/components/elements/confirmationModal/components/confirmationModal";
 import { CarsBrand } from "~/types/cars";
+import { FormModal } from "~/components/elements/formModal/components/formModal";
+import { CardModal } from "~/components/elements/cardModal/components/cardModal";
 
 const VehicleComponent = ({
   carData,
@@ -19,8 +20,14 @@ const VehicleComponent = ({
   const [vehicleToRemove, setVehicleToRemove] = useState<
     VehicleProps | undefined
   >();
+  const [formModalType, setFormModalType] = useState<
+    "Edit" | "Update" | "Create" | ""
+  >("");
+
+  const [showVehicleDetails, setShowVehicleDetails] = useState(false);
 
   function handleCloseModal() {
+    setShowVehicleDetails(false);
     setSelectedVehicle(undefined);
   }
 
@@ -30,6 +37,7 @@ const VehicleComponent = ({
 
   function handleRemoveVehicle(vehicleId: string) {
     removeVehicle(vehicleId);
+    setVehicleToRemove(undefined);
   }
 
   function handleChangeVehicle(vehicleId: string, vehicle: VehicleProps) {
@@ -39,7 +47,9 @@ const VehicleComponent = ({
   return (
     <S.Wrapper>
       <S.ButtonWrapper>
-        <S.Button>Adicionar Novo Carro</S.Button>
+        <S.Button onClick={() => setFormModalType("Create")}>
+          Adicionar Carro
+        </S.Button>
       </S.ButtonWrapper>
       {brandValues
         .filter((brand) => !isNaN(Number(brand)))
@@ -52,9 +62,16 @@ const VehicleComponent = ({
                   return (
                     <span key={car.id}>
                       <VehicleCard
-                        onClick={(vehicle) => setSelectedVehicle(vehicle)}
+                        onClick={(vehicle) => {
+                          setSelectedVehicle(vehicle);
+                          setShowVehicleDetails(true);
+                        }}
                         vehicle={car}
                         onClickRemove={(vehicle) => setVehicleToRemove(vehicle)}
+                        onClickEdit={(vehicle) => {
+                          setFormModalType("Edit");
+                          setSelectedVehicle(vehicle);
+                        }}
                       />
                     </span>
                   );
@@ -63,10 +80,11 @@ const VehicleComponent = ({
           </span>
         ))}
       <CardModal
-        isOpen={!!selectedVehicle}
+        isOpen={showVehicleDetails}
         onClose={handleCloseModal}
         vehicle={selectedVehicle}
       />
+
       <ConfirmationModal
         isOpen={!!vehicleToRemove}
         onClose={() => setVehicleToRemove(undefined)}
@@ -76,6 +94,22 @@ const VehicleComponent = ({
         vehicleToRemove={`${
           vehicleToRemove?.brand && CarsBrand[vehicleToRemove?.brand]
         } ${vehicleToRemove?.nome_modelo}`}
+      />
+
+      <FormModal
+        isOpen={["Edit", "Update", "Create"].includes(formModalType)}
+        onClose={() => {
+          setSelectedVehicle(undefined);
+          setFormModalType("");
+        }}
+        vehicle={selectedVehicle}
+        onSubmit={(newValues, vehicleId) => {
+          formModalType === "Create"
+            ? handleAddVehicle(newValues)
+            : vehicleId && handleChangeVehicle(vehicleId, newValues);
+          setSelectedVehicle(undefined);
+          setFormModalType("");
+        }}
       />
     </S.Wrapper>
   );

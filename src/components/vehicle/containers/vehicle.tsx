@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import { carsCollection } from "~/lib/firebase/controller";
 import { onSnapshot } from "firebase/firestore";
 import { VehicleProps } from "../types/vehicle";
+import {
+  updateVehicleService,
+  removeVehicleService,
+  addVehicleService,
+} from "~/services/carsCRUD";
 
 const Vehicle = () => {
   const [carData, setCarData] = useState<VehicleProps[]>([]);
@@ -18,29 +23,11 @@ const Vehicle = () => {
         })
       );
     });
-
-    // updateCar("8qviWc6NSg2QjNhrVpvX", {
-    //   timestamp_cadastro: 1696531234,
-    //   modelo_id: 14,
-    //   ano: 2014,
-    //   combustivel: "FLEX",
-    //   num_portas: 4,
-    //   cor: "AZUL",
-    //   nome_modelo: "JETTA",
-    //   valor: 49.0,
-    // });
-    // removeCar("carId");
-    // addCar({
-    //   timestamp_cadastro: 1696539488,
-    //   modelo_id: 12,
-    //   ano: 2015,
-    //   combustivel: "FLEX",
-    //   num_portas: 4,
-    //   cor: "BEGE",
-    //   nome_modelo: "ONIX PLUS",
-    //   valor: 50.0,
-    // });
   }, []);
+
+  useEffect(() => {
+    console.log("carData", carData); //TODO remove log
+  }, [carData]);
 
   return (
     <VehicleComponent
@@ -52,14 +39,17 @@ const Vehicle = () => {
 export default Vehicle;
 
 function addVehicle(vehicle: Omit<VehicleProps, "id">) {
-  console.log("addVehicle vehicle", vehicle); // remove logs
+  addVehicleService({
+    ...vehicle,
+    timestamp_cadastro: Date.now(),
+    brand: Number(vehicle.brand),
+  });
 }
 
 function changeVehicle(vehicleId: string, vehicle: VehicleProps) {
-  console.log("changeVehicle vehicleId", vehicleId); // remove logs
-  console.log("changeVehicle vehicle", vehicle); // remove logs
+  updateVehicleService(vehicleId, { ...vehicle, brand: Number(vehicle.brand) });
 }
 
 function removeVehicle(vehicleId: string) {
-  console.log("vehicleId", vehicleId); // remove logs
+  removeVehicleService(vehicleId);
 }

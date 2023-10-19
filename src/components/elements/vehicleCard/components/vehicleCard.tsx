@@ -7,7 +7,12 @@ import { VehicleCardProps } from "../types/vehicleCard";
 import * as S from "./vehicleCard.styles";
 import { FiEdit3, FiTrash } from "react-icons/fi";
 
-const VehicleCard = ({ vehicle, onClick, onClickRemove }: VehicleCardProps) => {
+const VehicleCard = ({
+  vehicle,
+  onClick,
+  onClickRemove,
+  onClickEdit,
+}: VehicleCardProps) => {
   return (
     <S.Wrapper>
       <S.ImageWrapper onClick={() => onClick(vehicle)} />
@@ -17,7 +22,7 @@ const VehicleCard = ({ vehicle, onClick, onClickRemove }: VehicleCardProps) => {
           <S.Title>
             {vehicle.nome_modelo} ({vehicle.ano})
           </S.Title>
-          <S.Price>R$ {currencyFormatter(vehicle.valor * 1000)}</S.Price>
+          <S.Price>R$ {currencyFormatter(vehicle.valor)}</S.Price>
         </div>
 
         <S.TimeWrapper>
@@ -28,7 +33,7 @@ const VehicleCard = ({ vehicle, onClick, onClickRemove }: VehicleCardProps) => {
       <S.RemoveIconWrapper onClick={() => onClickRemove(vehicle)}>
         <FiTrash />
       </S.RemoveIconWrapper>
-      <S.EditIconWrapper onClick={() => console.log("1234")}>
+      <S.EditIconWrapper onClick={() => onClickEdit(vehicle)}>
         <FiEdit3 />
       </S.EditIconWrapper>
     </S.Wrapper>

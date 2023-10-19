@@ -7,7 +7,6 @@ import { currencyFormatter } from "~/utils/formatter";
 import { FiX } from "react-icons/fi";
 
 export function CardModal({ isOpen, vehicle, onClose }: CardModalProps) {
-  console.log("vehicle", vehicle); // remove logs
   return (
     <Modal
       isOpen={isOpen}
@@ -50,7 +49,7 @@ export function CardModal({ isOpen, vehicle, onClose }: CardModalProps) {
         </S.VehicleInfosWrapper>
 
         <S.Valor>
-          R$ {vehicle?.valor && currencyFormatter(vehicle?.valor * 1000)}
+          R$ {vehicle?.valor && currencyFormatter(vehicle?.valor)}
         </S.Valor>
       </S.Wrapper>
     </Modal>

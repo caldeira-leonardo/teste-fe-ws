@@ -1,7 +1,7 @@
 import ReactModal from "react-modal";
-import { customStyles } from "../../cardModal/components/cardModal.styles";
 import { ConfirmationModalProps } from "../types/confirmationModal";
 import * as S from "./confirmationModal.styles";
+import { customStyles } from "../../cardModal/components/cardModal.styles";
 
 function ConfirmationModal({
   vehicleToRemove,
